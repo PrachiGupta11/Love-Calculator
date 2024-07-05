@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Calculator</title>
+</head>
+<style>
+    #content{
+        text-align: center;
+    }
+    h1{
+        color: hotpink;
+    }
+    input{
+        color:crimson;
+        border-color: hotpink;
+        padding: 10px;
+    }
+    input{
+        border-color: hotpink;
+    }
+    button{
+        color:crimson;
+        border-color: hotpink;
+        padding: 10px;
+        width: 185px;;
+    }
+</style>
+<body>
+    <div id="content">
+        <img src="./Images/Couple.png" height="400px">
+        <h1>Love Calculator</h1>
+        <h1 id="result"></h1>
+        <input type="text" placeholder="Enter Your Name" id="name1"/>  <br/><br/>
+        <input type="text" placeholder="Enter Lover Name" id="name2"/>  <br/><br/>
+        <button onclick="CalculateLove()">Calculate Love</button>
+    </div>
+    <script>
+        function CalculateLove()
+        {
+            let firstName = document.getElementById('name1').value;
+            let secondName = document.getElementById('name2').value;
+            if(firstName && secondName)
+            {
+                let total=Math.floor(Math.random()*100);
+                
+                let str=(firstName+secondName).replace(/\s/g,"");
+                str=str.toLowerCase();
+                if(localStorage.getItem(str))
+                {
+                    total=localStorage.getItem(str);
+                }
+                else{
+                    localStorage.setItem(str,total);
+                }
+                document.getElementById('result').innerText=total;
+            }   
+            else{
+                alert("Please Enter Valid Name");
+            } 
+        }
+    </script>
+</body>
+</html>
